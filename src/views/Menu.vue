@@ -1,10 +1,12 @@
 <template>
   <ion-page>
+
     <ion-header>
       <ion-toolbar>
         <ion-title>Menu</ion-title>
       </ion-toolbar>
     </ion-header>
+
     <ion-content :fullscreen="true" class="ion-padding">
       <div class="container">
         <h2 style="font-weight: bold; text-align: center"><span style="font-size:36px !important;">CHOOSE A OPTION</span></h2>
@@ -35,7 +37,7 @@
           "
         >
           <ion-button
-            @click="GoTo('price')"
+            @click="GoTo('report')"
             color="light"
             expand="block"
             class="btn"
@@ -51,7 +53,6 @@
       <img class="image" src="../assets/images/teste.png" />
       </div>
     </ion-content>
-    
   </ion-page>
 </template>
 
@@ -88,7 +89,7 @@ export default defineComponent({
       if (place == "price") {
         this.$router.push("/checkprice");
       } else if (place == "report") {
-        this.$router.push("/report"); //criar.
+        this.$router.push("/newcomplaint"); //criar.
       }
     },
   },

@@ -111,6 +111,7 @@ export default defineComponent({
 </script>
 
 <style scoped>
+
 .centered-content {
   display: flex;
   flex-direction: column;
