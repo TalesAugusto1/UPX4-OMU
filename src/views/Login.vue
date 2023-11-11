@@ -67,11 +67,11 @@ export default defineComponent({
         console.log(`Confirm Password is: ${this.confirmPassword}`);
       }
 
-  if (this.email === 'test@gmail.com' && this.password === '123123') {
-    this.$router.push('/menu');
-  } else {
-    console.log('Invalid email or password');
-  }
+      if (this.email === 'test@gmail.com' && this.password === '123123') {
+        this.$router.push('/menu');
+      } else {
+        console.log('Invalid email or password');
+      }
 
     },
     toggleForm() {
@@ -82,14 +82,14 @@ export default defineComponent({
 </script>
 
 <style scoped>
-.input-wrapper{
+.input-wrapper {
   border-radius: 1.5rem;
   overflow: hidden;
   background-color: rgba(131, 131, 131, 0.055);
-  margin:10px;
+  margin: 10px;
 }
 
-.input{
+.input {
   --padding-start: 1rem;
   --padding-end: 1rem;
   --padding-top: 1rem;
