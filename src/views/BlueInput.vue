@@ -33,14 +33,19 @@
     overflow: hidden;
     background-color: #1e90ff;
     margin:10px;
+    background: transparent;
+  border: none;
+  border-bottom: 2px solid #000; /* or any color you want */
+  outline: none;
+
   }
-  
+
   .input{
     --padding-start: 1rem;
     --padding-end: 1rem;
     --padding-top: 1rem;
     --padding-bottom: 1rem;
-    color: white;
+    color: black;
   }
   </style>
   
