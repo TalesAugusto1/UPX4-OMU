@@ -5,19 +5,20 @@
         <ion-title>Login</ion-title>
       </ion-toolbar>
     </ion-header>
-    <ion-content :fullscreen="true">
+    <ion-content :fullscreen="true" class="centered-content">
+      <img src="../assets/images/teste.png">
       <form @submit.prevent="submitForm" style="margin: 20px;">
         <div v-if="isSignUp" class="input-wrapper">
-          <ion-input class="input" v-model="name" type="text" placeholder="Name"></ion-input>
+          <blue-input v-model="name" type="text" placeholder="Name"></blue-input>
         </div>
         <div class="input-wrapper">
-          <ion-input class="input" v-model="email" type="email" placeholder="Email"></ion-input>
+          <blue-input v-model="email" type="email" placeholder="Email"></blue-input>
         </div>
         <div class="input-wrapper">
-          <ion-input class="input" v-model="password" type="password" placeholder="Password"></ion-input>
+          <blue-input v-model="password" type="password" placeholder="Password"></blue-input>
         </div>
         <div v-if="isSignUp" class="input-wrapper">
-          <ion-input class="input" v-model="confirmPassword" type="password" placeholder="Confirm Password"></ion-input>
+          <blue-input v-model="confirmPassword" type="password" placeholder="Confirm Password"></blue-input>
         </div>
         <div style="width: 70%; margin: auto;">
           <ion-button expand="block" type="submit">{{ isSignUp ? 'Create Account' : 'Login' }}</ion-button>
@@ -32,8 +33,9 @@
 </template>
 
 <script lang="ts">
-import { IonButton, IonContent, IonHeader, IonInput, IonItem, IonLabel, IonPage, IonTitle, IonToolbar } from '@ionic/vue';
+import { IonButton, IonContent, IonHeader, IonPage, IonTitle, IonToolbar } from '@ionic/vue';
 import { defineComponent } from 'vue';
+import BlueInput from './BlueInput.vue';
 
 export default defineComponent({
   name: 'Login',
@@ -41,12 +43,10 @@ export default defineComponent({
     IonButton,
     IonContent,
     IonHeader,
-    IonInput,
-    IonItem,
-    IonLabel,
     IonPage,
     IonTitle,
-    IonToolbar
+    IonToolbar,
+    BlueInput
   },
   data() {
     return {
@@ -67,12 +67,11 @@ export default defineComponent({
         console.log(`Confirm Password is: ${this.confirmPassword}`);
       }
 
-  if (this.email === 'test@gmail.com' && this.password === '123123') {
-    this.$router.push('/menu');
-  } else {
-    console.log('Invalid email or password');
-  }
-
+      if (this.email === 'test@gmail.com' && this.password === '123123') {
+        this.$router.push('/menu');
+      } else {
+        console.log('Invalid email or password');
+      }
     },
     toggleForm() {
       this.isSignUp = !this.isSignUp;
@@ -82,17 +81,25 @@ export default defineComponent({
 </script>
 
 <style scoped>
-.input-wrapper{
-  border-radius: 1.5rem;
-  overflow: hidden;
-  background-color: rgba(131, 131, 131, 0.055);
-  margin:10px;
+.centered-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: auto 0 !important; /* Center horizontally */
 }
 
-.input{
-  --padding-start: 1rem;
-  --padding-end: 1rem;
-  --padding-top: 1rem;
-  --padding-bottom: 1rem;
+ion-content {
+  --ion-background-color: #f0f8ff;
+}
+
+ion-button {
+  --background: linear-gradient(to right, #1e90ff, #00bfff);
+  --color: white;
+}
+
+p {
+  color: #00008b;
 }
 </style>
