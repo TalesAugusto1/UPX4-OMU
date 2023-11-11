@@ -5,6 +5,7 @@ import Menu from '../views/Menu.vue';
 import CheckPrice from '../views/CheckPrice.vue';
 import NewComplaint from '../views/NewComplaint.vue';
 
+
 const routes: Array<RouteRecordRaw> = [
   {
     path: '/',
@@ -17,7 +18,11 @@ const routes: Array<RouteRecordRaw> = [
   },
   { path: '/menu', component: Menu },
   {path: '/checkprice', component: CheckPrice },
+
   {path: '/newcomplaint', component: NewComplaint },
+
+  {path:'/blueinput', component:BlueInput},
+
 ]
 
 export const router = createRouter({
