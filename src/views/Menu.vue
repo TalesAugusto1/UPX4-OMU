@@ -1,12 +1,10 @@
 <template>
   <ion-page>
-
     <ion-header>
       <ion-toolbar>
         <ion-title>Menu</ion-title>
       </ion-toolbar>
     </ion-header>
-
     <ion-content :fullscreen="true" class="ion-padding">
       <div class="container">
         <h2 style="font-weight: bold; text-align: center"><span style="font-size:36px !important;">CHOOSE A OPTION</span></h2>
@@ -53,6 +51,7 @@
       <img class="image" src="../assets/images/teste.png" />
       </div>
     </ion-content>
+    
   </ion-page>
 </template>
 
@@ -97,6 +96,7 @@ export default defineComponent({
 </script>
 
 <style scoped>
+@import url('https://fonts.googleapis.com/css2?family=Lilita+One&display=swap');
 ion-content {
   --background: linear-gradient(to bottom, #73b3fa, white);
   display: flex;
@@ -129,7 +129,7 @@ ion-button {
   align-items: center;
   height: 100%;
 }
-@import url('https://fonts.googleapis.com/css2?family=Lilita+One&display=swap');
+
 span {
   font-family: 'Lilita One', cursive;
   font-size: 20px;

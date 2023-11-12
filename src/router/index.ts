@@ -4,7 +4,7 @@ import Login from '../views/Login.vue';
 import Menu from '../views/Menu.vue';
 import CheckPrice from '../views/CheckPrice.vue';
 import NewComplaint from '../views/NewComplaint.vue';
-
+import BlueInput from "../views/BlueInput.vue"
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -21,7 +21,7 @@ const routes: Array<RouteRecordRaw> = [
 
   {path: '/newcomplaint', component: NewComplaint },
 
-  {path:'/blueinput', component:BlueInput},
+  {path:'/blueinput', component: BlueInput},
 
 ]
 

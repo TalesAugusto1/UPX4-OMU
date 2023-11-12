@@ -135,45 +135,40 @@ export default defineComponent({
 }
 
 .form__newComplaint {
-    width: 30%;
+    width: 100%;
+    max-width: 600px;
     margin: 0 auto !important;
+    padding: 20px;
 }
 
-.form__input-cep {
-    border: 1px solid #424242;
-    border-radius: 8px;
-    padding-left: 1.5em !important;
-    margin-top: 0.5em;
-    width: 97%;
-}
-
-.form__select-problem {
+.form__input-cep,
+.form__select-problem,
+.form__textarea-description {
     border: 1px solid #424242;
     border-radius: 8px;
     padding: 1em !important;
     margin-top: 0.5em;
-    background-color: transparent;
-    width: 97%;
+    width: 100%;
+    font-size: 16px;
 }
 
-.form__button-photo-reports,
-.form__textarea-description{
+.form__button-photo-reports ion-button {
     margin-top: 0.4em;
+    font-size: 16px;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
 }
 
 .div__input-cep,
 .div__select-problem,
 .div_photo-reports,
 .div__description {
-    margin: 2em 1em;
+    margin: 2em 0;
 }
 
 .form__textarea-description{
-    width: 97%;
     height: 6em;
-    padding: 0.5em;
-    background-color: transparent;
-    border-radius: 8px;
 }
 
 .form__select-problem option{

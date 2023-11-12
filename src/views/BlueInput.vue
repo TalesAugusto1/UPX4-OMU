@@ -9,7 +9,7 @@
   import { defineComponent, computed } from 'vue';
   
   export default defineComponent({
-    name: 'BlueInput',
+    name: 'inputBlue',
     components: {
       IonInput
     },
@@ -45,7 +45,7 @@
     --padding-end: 1rem;
     --padding-top: 1rem;
     --padding-bottom: 1rem;
-    color: black;
+    color: black  ;
   }
   </style>
   
