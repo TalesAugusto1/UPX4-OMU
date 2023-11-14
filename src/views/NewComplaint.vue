@@ -2,10 +2,10 @@
     <ion-page>
         <ion-header>
             <ion-toolbar>
-                <ion-title>New Complaint</ion-title>
+                <ion-title>Nova Denúncia</ion-title>
             </ion-toolbar>
         </ion-header>
-        <ion-content :fullscreen="true" class="ion-content">
+        <ion-content :fullscreen="true" class="ion-content gradient-background no-scroll">
             <form class="form__newComplaint" @submit.prevent="submitForm" style="margin: 20px;">
                 <div class="input-wrapper div__input-cep">
                     <label class="form__label-cep">Insira o CEP:</label>
@@ -32,7 +32,10 @@
                     <textarea class="form__textarea-description" v-model="complaintDescription"
                         placeholder="Digite a descrição da denúncia aqui..."></textarea>
                 </div>
+                <div class="div_form_button-submit"><button class="form_button-submit" type="submit">Enviar</button></div>
             </form>
+
+            <img class="image" src="../assets/images/teste - Copia.png"/>
         </ion-content>
 
         <!-- Footer -->
@@ -127,11 +130,29 @@ export default defineComponent({
 </script>
   
 <style scoped>
-.ion-content{
+.ion-content.no-scroll {
+    max-height: calc(100vh - 56px); /* Ajuste conforme necessário, 56px é uma estimativa da altura do cabeçalho */
+    overflow: hidden;
+}
+
+ion-title {
+    padding: 1em;
+    background: #176d7f;
+    text-align: center;
+    font-family: 'Lilita One', sans-serif;
+}
+
+ion-content {
+    background: linear-gradient(#3c97a9, #248193, #56A5A9) !important;
+    font-family: 'Lilita One', sans-serif;
+}
+
+.ion-content {
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100%;
+    --ion-background-color: linear-gradient(#97eeff, #b2e4ed, #ffffff);
 }
 
 .form__newComplaint {
@@ -141,23 +162,47 @@ export default defineComponent({
     padding: 20px;
 }
 
+.form__label-cep,
+.form__label-description,
+.form__label-photo-reports,
+.form__label-problem {
+    color: #258395;
+}
+
 .form__input-cep,
 .form__select-problem,
 .form__textarea-description {
     border: 1px solid #424242;
     border-radius: 8px;
-    padding: 1em !important;
+    padding: 0.8em !important;
     margin-top: 0.5em;
     width: 100%;
     font-size: 16px;
+    font-family: 'Lilita One', sans-serif;
+
+    background-color: white;
+    color: rgba(37,131,149, 0.5);
 }
 
+.form__textarea-description::placeholder {
+    color: rgba(37,131,149, 0.5);
+}
+
+.form__input-cep {
+    padding: 0 0.8em !important;
+}
+
+.form__button-photo-reports {
+    display: flex;
+    flex-direction: row;
+    gap: 1em;
+}
 .form__button-photo-reports ion-button {
-    margin-top: 0.4em;
-    font-size: 16px;
-    padding: 10px 20px;
-    background-color: #007bff;
+    margin-top: 0.5em;
+    width: 100%;
+    font-size: 13px;
     color: white;
+    font-family: 'Lilita One', sans-serif;
 }
 
 .div__input-cep,
@@ -167,12 +212,28 @@ export default defineComponent({
     margin: 2em 0;
 }
 
-.form__textarea-description{
+.form__textarea-description {
     height: 6em;
 }
 
-.form__select-problem option{
-    color: black;
+.form__select-problem option[disabled][selected] {
+    color: white !important;
 }
 
+.div_form_button-submit {
+    text-align: center;
+}
+.form_button-submit {
+    background-color: #428cff;
+    color: white;
+    padding: 0.5em;
+    width: 80%;
+    font-size: 19px;
+    border-radius: 8px;
+}
+
+.image {
+    width: 100%;
+    height: 11em;
+}
 </style>
