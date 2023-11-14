@@ -88,6 +88,8 @@ export default defineComponent({
             console.log(`CEP is: ${this.cep}`);
 
         },
+
+        //function to take the photo by the cellphone camera
         takePhoto() {
             const options: CameraOptions = {
                 quality: 100,
@@ -99,6 +101,8 @@ export default defineComponent({
             Camera.getPicture(options).then(
                 (imageData: string) => {
                     console.log(imageData);
+                    let base64Image = 'data:image/jpeg;base64,' + imageData;
+                    console.log(base64Image);
                 },
                 (err: string) => {
                     console.log(err);
@@ -106,6 +110,7 @@ export default defineComponent({
             );
         },
 
+        //function to choose the photo from cellphone galery
         choosePhoto() {
             const options: CameraOptions = {
                 quality: 100,
@@ -118,6 +123,8 @@ export default defineComponent({
             Camera.getPicture(options).then(
                 (imageData: string) => {
                     console.log(imageData);
+                    let base64Image = 'data:image/jpeg;base64,' + imageData;
+                    console.log(base64Image);
                 },
                 (err: string) => {
                     console.log(err);

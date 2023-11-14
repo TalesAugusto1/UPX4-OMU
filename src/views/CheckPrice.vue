@@ -95,55 +95,65 @@ export default defineComponent({
   },
   data() {
     return {
-     gasStations: [
-  { name: 'Station 1', location: 'Location 1', gasPrice: 2.50, alcoholPrice: '1.90' },
-  { name: 'Station 2', location: 'Location 2', gasPrice: 2.60, alcoholPrice: '1.80' },
-  { name: 'Station 3', location: 'Location 3', gasPrice: 2.55, alcoholPrice: '1.85' },
-  { name: 'Station 4', location: 'Location 4', gasPrice: 2.70, alcoholPrice: '1.95' },
-  { name: 'Station 5', location: 'Location 5', gasPrice: 2.65, alcoholPrice: '1.90' },
-  { name: 'Station 6', location: 'Location 6', gasPrice: 2.75, alcoholPrice: '1.95' },
-  { name: 'Station 7', location: 'Location 7', gasPrice: 2.80, alcoholPrice: '2.00' }
-],
-     showModal:false,
-     newStation:{}
+      gasStations: [
+        { name: 'Station 1', location: 'Location 1', gasPrice: 2.50, alcoholPrice: 1.90 },
+        { name: 'Station 2', location: 'Location 2', gasPrice: 2.60, alcoholPrice: 1.80 },
+        { name: 'Station 3', location: 'Location 3', gasPrice: 2.55, alcoholPrice: 1.85 },
+        { name: 'Station 4', location: 'Location 4', gasPrice: 2.70, alcoholPrice: 1.95 },
+        { name: 'Station 5', location: 'Location 5', gasPrice: 2.65, alcoholPrice: 1.90 },
+        { name: 'Station 6', location: 'Location 6', gasPrice: 2.75, alcoholPrice: 1.95 },
+        { name: 'Station 7', location: 'Location 7', gasPrice: 2.80, alcoholPrice: 2.00 }
+      ],
+      showModal: false,
+      newStation: {
+        name: '',
+        location: '',
+        gasPrice: null,
+        alcoholPrice: null
+      }
     }
   },
 
- computed:{
-   averageGasPrice(){
-     let total =0;
-     for(let i=0;i<this.gasStations.length;i++){
-       total += this.gasStations[i].gasPrice;
-     }
-     return total/this.gasStations.length;
-   }
- },
+  computed: {
+    averageGasPrice() {
+      let total = 0;
+      for (let i = 0; i < this.gasStations.length; i++) {
+        total += this.gasStations[i].gasPrice;
+      }
+      return total / this.gasStations.length;
+    }
+  },
 
- methods:{
-   getImage(price:number){
-     if(price<this.averageGasPrice*0.95){ //20% lower than the average
-       return'src/assets/images/cheap.jpg';
-     }else if(price>this.averageGasPrice*1.05){ //20% higher than the average
-       return'src/assets/images/normal.jpg';
-     }else{
-       return'src/assets/images/expensive.jpg';
-     }
-   },
+  methods: {
+    getImage(price:GLfloat) {
+      if (price < this.averageGasPrice * 0.95) { // 5% lower than the average
+        return 'src/assets/images/cheap.jpg';
+      } else if (price > this.averageGasPrice * 1.05) { // 5% higher than the average
+        return 'src/assets/images/normal.jpg';
+      } else {
+        return 'src/assets/images/expensive.jpg';
+      }
+    },
 
-   saveStation(){
-     const existingStation = this.gasStations.find(station => station.name === this.newStation.name);
-     if(existingStation){
-       Object.assign(existingStation,this.newStation);
-     }else{
-       this.gasStations.push(this.newStation);
-     }
-     this.newStation = {};
-     this.showModal = false;
-   }
- }
+    saveStation() {
+      const existingStation = this.gasStations.find(station => station.name === this.newStation.name);
+      if (existingStation) {
+        Object.assign(existingStation, this.newStation);
+      } else {
+        this.gasStations.push({ ...this.newStation }); // Use spread operator to create a new object
+      }
+      this.newStation = {
+        name: '',
+        location: '',
+        gasPrice: null,
+        alcoholPrice: null
+      };
+      this.showModal = false;
+    }
+  }
 });
 </script>
 
 <style scoped>
-
+  /* Add your styles here if needed */
 </style>
