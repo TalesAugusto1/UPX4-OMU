@@ -2,24 +2,26 @@
   <ion-page>
     <ion-header>
       <ion-toolbar>
-        <ion-title>CheckPrice</ion-title>
+        <ion-title>Preços</ion-title>
       </ion-toolbar>
     </ion-header>
-    <ion-content :fullscreen="true">
+    <ion-content :fullscreen="true" class="ion-content">
       <ion-list>
-        <ion-item v-for="(station, index) in gasStations" :key="index">
-          <ion-label>
-            <h2>{{ station.name }}</h2>
-            <p>{{ station.location }}</p>
-            <p>Gas Price: {{ station.gasPrice }}</p>
-            <p>Alcohol Price: {{ station.alcoholPrice }}</p>
+        <ion-item v-for="(station, index) in gasStations" :key="index" class="div_posto">
+          <ion-label class="ion-label_posto">
+            <h2 class="name_posto">{{ station.name }}</h2>
+            <p class="location_posto"><img src="../assets/images/location.png" alt=""> {{ station.location }}</p>
+            <p class="gasPrice_posto">Gas Price: ......................................... R$ {{ station.gasPrice }}</p>
+            <p class="alcoholPrice_posto">Alcohol Price: ................................... R$ {{ station.alcoholPrice }}
+            </p>
           </ion-label>
-          <img :src="getImage(station.gasPrice)" alt="price image" style="width:100px;height:100px;border-radius:100px">
+          <img :src="getImage(station.gasPrice)" alt="price image" style="width:100px;height:100px;border-radius:100px"
+            class="photo_posto">
         </ion-item>
       </ion-list>
 
       <!-- Add/Update Station Button -->
-      <ion-button @click="showModal = true">Add/Update Station</ion-button>
+      
 
       <!-- Add/Update Station Modal -->
       <ion-modal :is-open="showModal">
@@ -96,13 +98,13 @@ export default defineComponent({
   data() {
     return {
       gasStations: [
-        { name: 'Station 1', location: 'Location 1', gasPrice: 2.50, alcoholPrice: 1.90 },
-        { name: 'Station 2', location: 'Location 2', gasPrice: 2.60, alcoholPrice: 1.80 },
-        { name: 'Station 3', location: 'Location 3', gasPrice: 2.55, alcoholPrice: 1.85 },
-        { name: 'Station 4', location: 'Location 4', gasPrice: 2.70, alcoholPrice: 1.95 },
-        { name: 'Station 5', location: 'Location 5', gasPrice: 2.65, alcoholPrice: 1.90 },
-        { name: 'Station 6', location: 'Location 6', gasPrice: 2.75, alcoholPrice: 1.95 },
-        { name: 'Station 7', location: 'Location 7', gasPrice: 2.80, alcoholPrice: 2.00 }
+        { name: 'Posto Shell', location: '2.3 km', gasPrice: 2.50, alcoholPrice: 1.90 },
+        { name: 'Posto Ipiranga', location: '2.3 km', gasPrice: 2.60, alcoholPrice: 1.80 },
+        { name: 'Posto Rede A', location: '2.3 km', gasPrice: 2.55, alcoholPrice: 1.85 },
+        { name: 'Posto Petrobas', location: '2.3 km', gasPrice: 2.70, alcoholPrice: 1.95 },
+        { name: 'Posto Shell', location: '2.3 km', gasPrice: 2.65, alcoholPrice: 1.90 },
+        { name: 'Posto Ipiranga', location: '2.3 km', gasPrice: 2.75, alcoholPrice: 1.95 },
+        { name: 'Posto Petrobas', location: '2.3 km', gasPrice: 2.80, alcoholPrice: 2.00 }
       ],
       showModal: false,
       newStation: {
@@ -125,7 +127,7 @@ export default defineComponent({
   },
 
   methods: {
-    getImage(price:GLfloat) {
+    getImage(price: GLfloat) {
       if (price < this.averageGasPrice * 0.95) { // 5% lower than the average
         return 'src/assets/images/cheap.jpg';
       } else if (price > this.averageGasPrice * 1.05) { // 5% higher than the average
@@ -155,5 +157,41 @@ export default defineComponent({
 </script>
 
 <style scoped>
-  /* Add your styles here if needed */
+ion-title {
+  padding: 1em;
+  background: #176d7f;
+  text-align: center;
+  font-family: 'Lilita One', sans-serif;
+}
+
+.ion-content {
+  text-align: center;
+}
+
+.div_posto {
+  --background: white;
+  margin: 1em;
+  border-radius: 8px;
+}
+
+.name_posto,
+.location_posto,
+.gasPrice_posto,
+.alcoholPrice_posto {
+  font-family: 'Lilita One', sans-serif;
+  color: #258395;
+}
+
+.name_posto {
+  font-size: 25px;
+}
+
+.photo_posto {
+  border: 1px solid black;
+}
+
+.botao_adicionar-posto {
+  font-family: 'Lilita One', sans-serif;
+  width: 50%;
+}
 </style>

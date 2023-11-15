@@ -96,6 +96,13 @@ export default defineComponent({
 </script>
 
 <style scoped>
+ion-title {
+  padding: 1em;
+  background: #176d7f;
+  text-align: center;
+  font-family: 'Lilita One', sans-serif;
+}
+
 @import url('https://fonts.googleapis.com/css2?family=Lilita+One&display=swap');
 ion-content {
   --background: linear-gradient(to bottom, #73b3fa, white);

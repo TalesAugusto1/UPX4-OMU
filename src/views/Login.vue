@@ -111,6 +111,12 @@ export default defineComponent({
 </script>
 
 <style scoped>
+ion-title {
+  padding: 1em;
+  background: #176d7f;
+  text-align: center;
+  font-family: 'Lilita One', sans-serif;
+}
 
 .centered-content {
   display: flex;
