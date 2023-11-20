@@ -8,34 +8,41 @@
     <ion-content :fullscreen="true" class="centered-content">
       <div class="header"><p class="header-label">O.M.U.</p></div>
       <img class="image" src="../assets/images/teste.png" />
-      <form @submit.prevent="submitForm" style="margin: 20px; margin-top:-140px; z-index:10">
+      <form
+        @submit.prevent="submitForm"
+        style="margin: 20px; margin-top: -140px; z-index: 10"
+      >
         <div v-if="isSignUp" class="input-wrapper">
-          <blue-input
+          <ion-input
+            class="input"
             v-model="name"
             type="text"
             placeholder="Name"
-          ></blue-input>
+          ></ion-input>
         </div>
         <div class="input-wrapper">
-          <blue-input
+          <ion-input
+            class="input"
             v-model="email"
             type="email"
             placeholder="Email"
-          ></blue-input>
+          ></ion-input>
         </div>
         <div class="input-wrapper">
-          <blue-input
+          <ion-input
+            class="input"
             v-model="password"
             type="password"
             placeholder="Password"
-          ></blue-input>
+          ></ion-input>
         </div>
         <div v-if="isSignUp" class="input-wrapper">
-          <blue-input
+          <ion-input
+            class="input"
             v-model="confirmPassword"
             type="password"
             placeholder="Confirm Password"
-          ></blue-input>
+          ></ion-input>
         </div>
         <div style="width: 70%; margin: auto">
           <ion-button expand="block" type="submit">{{
@@ -63,9 +70,9 @@ import {
   IonPage,
   IonTitle,
   IonToolbar,
+  IonInput,
 } from "@ionic/vue";
 import { defineComponent } from "vue";
-import BlueInput from "./BlueInput.vue";
 
 export default defineComponent({
   name: "Login",
@@ -76,7 +83,7 @@ export default defineComponent({
     IonPage,
     IonTitle,
     IonToolbar,
-    BlueInput,
+    IonInput,
   },
   data() {
     return {
@@ -115,7 +122,7 @@ ion-title {
   padding: 1em;
   background: #176d7f;
   text-align: center;
-  font-family: 'Lilita One', sans-serif;
+  font-family: "Lilita One", sans-serif;
 }
 
 .centered-content {
@@ -148,15 +155,26 @@ ion-title {
   margin-top: -150px;
   margin-left: -5px;
   transform: scale(1.05);
-  z-index:-100 !important;
+  z-index: -100 !important;
 }
-
 
 .input-wrapper {
-  margin-bottom: 20px; /* or any size you want */
+  border-radius: 1.5rem;
+  overflow: hidden;
+  background-color: #1e90ff;
+  margin: 10px;
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid #000; /* or any color you want */
+  outline: none;
 }
-ion-content {
-  --ion-background-color: #f0f8ff;
+
+.input {
+  --padding-start: 1rem;
+  --padding-end: 1rem;
+  --padding-top: 1rem;
+  --padding-bottom: 1rem;
+  color: black;
 }
 
 ion-button {
