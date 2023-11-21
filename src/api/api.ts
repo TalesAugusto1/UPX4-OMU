@@ -3,11 +3,19 @@ import axios from "axios";
 const API_URL = "http://15.228.243.32:8080";
 
 export async function loginUser(user: string, password: string) {
-  const response = await axios.post(`${API_URL}/auth/login`, {
-    user,
-    password,
-  });
-  return response.data;
+  axios
+    .post("http://15.228.243.32:8080/auth/login", {
+      user: "vinicandido00@gmail.com",
+      password: "12345678",
+    })
+    .then(
+      (response) => {
+        console.log(response);
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
 }
 
 export async function registerUser(user: string, password: string) {

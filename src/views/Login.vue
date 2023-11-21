@@ -73,6 +73,7 @@ import {
   IonInput,
 } from "@ionic/vue";
 import { defineComponent } from "vue";
+import { loginUser, registerUser } from "@/api/api"; // Import API functions
 
 export default defineComponent({
   name: "Login",
@@ -95,19 +96,13 @@ export default defineComponent({
     };
   },
   methods: {
-    submitForm() {
+    async submitForm() {
       // Handle login or sign up logic here
-      console.log(`Email is: ${this.email}`);
-      console.log(`Password is: ${this.password}`);
       if (this.isSignUp) {
-        console.log(`Name is: ${this.name}`);
-        console.log(`Confirm Password is: ${this.confirmPassword}`);
-      }
-
-      if (this.email === "test@gmail.com" && this.password === "123123") {
-        this.$router.push("/menu");
+        await registerUser(this.email, this.password);
       } else {
-        console.log("Invalid email or password");
+        const token = await loginUser(this.email, this.password);
+        console.log(token); // Log the JWT token
       }
     },
     toggleForm() {
