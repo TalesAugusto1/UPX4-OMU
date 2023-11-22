@@ -26,6 +26,7 @@
             v-model="email"
             type="email"
             placeholder="Email"
+            @input="validateEmail"
           ></ion-input>
         </div>
         <div class="input-wrapper">
@@ -93,16 +94,46 @@ export default defineComponent({
       password: "",
       confirmPassword: "",
       isSignUp: false,
+      isEmailValid: true,
     };
   },
   methods: {
+    validateEmail() {
+      // Regular expression for validating an Email
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+      // Check if the entered email matches the regular expression
+      this.isEmailValid = emailRegex.test(this.email);
+    },
+
     async submitForm() {
-      // Handle login or sign up logic here
+      // Check if email and password are not null or empty
+      if (!this.email || !this.password) {
+        console.error("Email and password are required");
+        // Handle the case where email or password is missing
+        return;
+      }
+
       if (this.isSignUp) {
+        // Check if the email and password are not null or empty before registering
         await registerUser(this.email, this.password);
       } else {
-        const token = await loginUser(this.email, this.password);
-        console.log(token); // Log the JWT token
+        try {
+          // Call loginUser to get the token
+          const token = await loginUser(this.email, this.password);
+
+          // Check if the token exists before navigating to "/menu"
+          if (token) {
+            console.log(token); // Log the JWT token
+            this.$router.push("/menu");
+          } else {
+            console.error("Token not found");
+            // Handle the case where the token is not available
+          }
+        } catch (error) {
+          console.error("Error during login:", error);
+          // Handle the login error, e.g., display an error message to the user
+        }
       }
     },
     toggleForm() {

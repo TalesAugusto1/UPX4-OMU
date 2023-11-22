@@ -1,21 +1,19 @@
 import axios from "axios";
 
-const API_URL = "http://15.228.243.32:8080";
+const API_URL = "http://54.233.155.180:8080";
 
 export async function loginUser(user: string, password: string) {
-  axios
-    .post("http://15.228.243.32:8080/auth/login", {
-      user: "vinicandido00@gmail.com",
-      password: "12345678",
-    })
-    .then(
-      (response) => {
-        console.log(response);
-      },
-      (error) => {
-        console.log(error);
-      }
-    );
+  try {
+    const response = await axios.post(`${API_URL}/auth/login`, {
+      user: user,
+      password: password,
+    });
+    console.log(response);
+    return response.data.tokenJwt;
+  } catch (error) {
+    console.error(error);
+    throw error; // Re-throw the error to handle it in the calling code
+  }
 }
 
 export async function registerUser(user: string, password: string) {
