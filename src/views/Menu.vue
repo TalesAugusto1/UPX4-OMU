@@ -7,51 +7,50 @@
     </ion-header>
     <ion-content :fullscreen="true" class="ion-padding">
       <div class="container">
-        <h2 style="font-weight: bold; text-align: center"><span style="font-size:36px !important;">CHOOSE A OPTION</span></h2>
+        <h2 style="font-weight: bold; text-align: center">
+          <span style="font-size: 36px !important">ESCOLHA UMA OPÇÃO</span>
+        </h2>
         <div style="display: flex; justify-content: space-between; width: 100%">
-        <div class="btn-dad"
-          >
-        <ion-button
-          @click="GoTo('price')"
-          color="light"
-          expand="block"
-          class="btn"
-        >
-         
-            <img
-              src="src\assets\images\gas_option.png"
-              style="width: 80%; height: 80%"
-            />
-        </ion-button>
-        <span style="margin: 10px">Consultar Preços</span>
+          <div class="btn-dad">
+            <ion-button
+              @click="GoTo('price')"
+              color="light"
+              expand="block"
+              class="btn"
+            >
+              <img
+                src="src\assets\images\gas_option.png"
+                style="width: 80%; height: 80%"
+              />
+            </ion-button>
+            <span style="margin: 10px">Consultar Preços</span>
           </div>
-        <div
-          style="
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            height: 100%;
-          "
-        >
-          <ion-button
-            @click="GoTo('report')"
-            color="light"
-            expand="block"
-            class="btn"
+          <div
+            style="
+              display: flex;
+              flex-direction: column;
+              justify-content: center;
+              align-items: center;
+              height: 100%;
+            "
           >
-            <img
-              src="src\assets\images\report_option.png"
-              style="width: 90%; height: 90%"
-            />
-          </ion-button>
-          <span style="margin: 10px">Nova denúncia</span>
+            <ion-button
+              @click="GoTo('report')"
+              color="light"
+              expand="block"
+              class="btn"
+            >
+              <img
+                src="src\assets\images\report_option.png"
+                style="width: 90%; height: 90%"
+              />
+            </ion-button>
+            <span style="margin: 10px">Nova denúncia</span>
+          </div>
         </div>
-      </div>
-      <img class="image" src="../assets/images/teste.png" />
+        <img class="image" src="../assets/images/teste.png" />
       </div>
     </ion-content>
-    
   </ion-page>
 </template>
 
@@ -100,10 +99,10 @@ ion-title {
   padding: 1em;
   background: #176d7f;
   text-align: center;
-  font-family: 'Lilita One', sans-serif;
+  font-family: "Lilita One", sans-serif;
 }
 
-@import url('https://fonts.googleapis.com/css2?family=Lilita+One&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Lilita+One&display=swap");
 ion-content {
   --background: linear-gradient(to bottom, #73b3fa, white);
   display: flex;
@@ -129,7 +128,7 @@ ion-button {
   width: 180px;
   border-radius: 50%;
 }
-.btn-dad{
+.btn-dad {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -138,7 +137,7 @@ ion-button {
 }
 
 span {
-  font-family: 'Lilita One', cursive;
+  font-family: "Lilita One", cursive;
   font-size: 20px;
   font-weight: bold;
   color: #258294;

@@ -46,16 +46,17 @@
           ></ion-input>
         </div>
         <div style="width: 70%; margin: auto">
-          <ion-button expand="block" type="submit">{{
-            isSignUp ? "Create Account" : "Login"
-          }}</ion-button>
+          <ion-button expand="block" type="submit" :disabled="loading">
+            {{ isSignUp ? "Criar conta" : "Login" }}
+            <ion-spinner v-if="loading" />
+          </ion-button>
         </div>
       </form>
       <p style="text-align: center; margin-top: 20px" @click="toggleForm">
         {{
           isSignUp
-            ? "Already have an account? Log in"
-            : "Don't have an account yet? Sign up"
+            ? "Já possuí uma conta? Log in"
+            : "Ainda não possuí uma conta? Cadastrar"
         }}
       </p>
     </ion-content>
@@ -72,6 +73,7 @@ import {
   IonTitle,
   IonToolbar,
   IonInput,
+  IonSpinner,
 } from "@ionic/vue";
 import { defineComponent } from "vue";
 import { loginUser, registerUser } from "@/api/api"; // Import API functions
@@ -86,6 +88,7 @@ export default defineComponent({
     IonTitle,
     IonToolbar,
     IonInput,
+    IonSpinner,
   },
   data() {
     return {
@@ -95,6 +98,7 @@ export default defineComponent({
       confirmPassword: "",
       isSignUp: false,
       isEmailValid: true,
+      loading: false,
     };
   },
   methods: {
@@ -113,7 +117,7 @@ export default defineComponent({
         // Handle the case where email or password is missing
         return;
       }
-
+      this.loading = true; // Set loading to true when waiting for the response
       if (this.isSignUp) {
         // Check if the email and password are not null or empty before registering
         await registerUser(this.email, this.password);
@@ -133,6 +137,8 @@ export default defineComponent({
         } catch (error) {
           console.error("Error during login:", error);
           // Handle the login error, e.g., display an error message to the user
+        } finally {
+          this.loading = false; // Reset loading regardless of the outcome
         }
       }
     },
