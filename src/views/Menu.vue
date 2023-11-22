@@ -124,8 +124,8 @@ ion-button {
   height: 80%;
 }
 .btn {
-  height: 180px;
-  width: 180px;
+  height: 150px;
+  width: 150px;
   border-radius: 50%;
 }
 .btn-dad {

@@ -120,7 +120,6 @@ export default defineComponent({
       this.loading = true; // Set loading to true when waiting for the response
       if (this.isSignUp) {
         // Check if the email and password are not null or empty before registering
-        await registerUser(this.email, this.password);
         this.$router.push("/menu");
       } else {
         try {

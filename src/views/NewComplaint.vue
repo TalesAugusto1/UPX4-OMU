@@ -51,6 +51,13 @@
             <ion-button @click="choosePhoto()">Escolher da Galeria</ion-button>
           </div>
         </div>
+
+        <div v-if="selectedImage">
+          <label class="form__label-photo-reports">Foto Selecionada:</label>
+          <br />
+          <img :src="selectedImage" alt="Selected Photo" style="width: 100%" />
+        </div>
+
         <div class="input-wrapper div__description">
           <label class="form__label-description">Descrição da Denúncia:</label>
           <br />
@@ -118,6 +125,7 @@ export default defineComponent({
       cep: "",
       selectedIssue: "",
       complaintDescription: "",
+      selectedImage: "",
     };
   },
 
@@ -151,9 +159,8 @@ export default defineComponent({
 
       Camera.getPicture(options).then(
         (imageData: string) => {
-          console.log(imageData);
           let base64Image = "data:image/jpeg;base64," + imageData;
-          console.log(base64Image);
+          this.selectedImage = base64Image; // Set the selected image
         },
         (err: string) => {
           console.log(err);
@@ -161,7 +168,6 @@ export default defineComponent({
       );
     },
 
-    //function to choose the photo from cellphone galery
     choosePhoto() {
       const options: CameraOptions = {
         quality: 100,
@@ -173,9 +179,8 @@ export default defineComponent({
 
       Camera.getPicture(options).then(
         (imageData: string) => {
-          console.log(imageData);
           let base64Image = "data:image/jpeg;base64," + imageData;
-          console.log(base64Image);
+          this.selectedImage = base64Image; // Set the selected image
         },
         (err: string) => {
           console.log(err);
@@ -187,6 +192,9 @@ export default defineComponent({
 </script>
 
 <style scoped>
+.form__label-photo-reports {
+  color: #258395;
+}
 .ion-content.no-scroll {
   max-height: calc(
     100vh - 56px
@@ -290,10 +298,15 @@ ion-content {
   width: 80%;
   font-size: 19px;
   border-radius: 8px;
+  z-index: 10 !important;
 }
 
 .image {
+  position: fixed;
+  bottom: 0;
+  left: 0;
   width: 100%;
   height: 11em;
+  z-index: -1;
 }
 </style>

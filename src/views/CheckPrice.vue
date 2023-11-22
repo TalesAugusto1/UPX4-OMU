@@ -19,20 +19,19 @@
               {{ station.location }}
             </p>
             <p class="gasPrice_posto">
-              Gas Price: ......................................... R$
+              Gas Price: .................... R$
               {{ station.gasPrice }}
             </p>
             <p class="alcoholPrice_posto">
-              Alcohol Price: ................................... R$
+              Alcohol Price: .............. R$
               {{ station.alcoholPrice }}
             </p>
           </ion-label>
-          <img
-            :src="getImage(station.gasPrice)"
-            alt="price image"
-            style="width: 100px; height: 100px; border-radius: 100px"
-            class="photo_posto"
-          />
+          <div class="photo_posto">
+            <ion-title style="font-size: small">{{
+              getLabelText(station.gasPrice)
+            }}</ion-title>
+          </div>
         </ion-item>
       </ion-list>
 
@@ -176,8 +175,8 @@ export default defineComponent({
       newStation: {
         name: "",
         location: "",
-        gasPrice: null,
-        alcoholPrice: null,
+        gasPrice: 0,
+        alcoholPrice: 0,
       },
     };
   },
@@ -193,11 +192,22 @@ export default defineComponent({
   },
 
   methods: {
+    getLabelText(price: number): string {
+      if (price < this.averageGasPrice * 0.97) {
+        // 5% lower than the average
+        return "CHEAP";
+      } else if (price > this.averageGasPrice * 1.02) {
+        // 5% higher than the average
+        return "EXPENSIVE";
+      } else {
+        return "AVERAGE";
+      }
+    },
     getImage(price: GLfloat) {
-      if (price < this.averageGasPrice * 0.95) {
+      if (price < this.averageGasPrice * 0.97) {
         // 5% lower than the average
         return "src/assets/images/cheap.jpg";
-      } else if (price > this.averageGasPrice * 1.05) {
+      } else if (price > this.averageGasPrice * 1.02) {
         // 5% higher than the average
         return "src/assets/images/normal.jpg";
       } else {
@@ -217,8 +227,8 @@ export default defineComponent({
       this.newStation = {
         name: "",
         location: "",
-        gasPrice: null,
-        alcoholPrice: null,
+        gasPrice: 0,
+        alcoholPrice: 0,
       };
       this.showModal = false;
     },
