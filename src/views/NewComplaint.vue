@@ -61,11 +61,17 @@
           ></textarea>
         </div>
         <div class="div_form_button-submit">
-          <button class="form_button-submit" type="submit">Enviar</button>
+          <button
+            class="form_button-submit"
+            type="submit"
+            @click="GoTo('Menu')"
+          >
+            Enviar
+          </button>
         </div>
       </form>
 
-      <img class="image" src="../assets/images/teste - Copia.png" />
+      <img class="image" src="/src/assets/images/teste2.png" />
     </ion-content>
 
     <!-- Footer -->
@@ -120,6 +126,15 @@ export default defineComponent({
   providers: [Camera],
 
   methods: {
+    GoTo(place: string) {
+      if (place == "price") {
+        this.$router.push("/checkprice");
+      } else if (place == "report") {
+        this.$router.push("/newcomplaint"); //criar.
+      } else if (place == "Menu") {
+        this.$router.push("/menu");
+      }
+    },
     submitForm() {
       // Handle login or sign up logic here
       console.log(`CEP is: ${this.cep}`);

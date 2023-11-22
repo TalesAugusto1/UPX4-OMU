@@ -19,7 +19,7 @@
               class="btn"
             >
               <img
-                src="src\assets\images\gas_option.png"
+                src="/src/assets/images/gas_option.png"
                 style="width: 80%; height: 80%"
               />
             </ion-button>
@@ -41,7 +41,7 @@
               class="btn"
             >
               <img
-                src="src\assets\images\report_option.png"
+                src="\src\assets\images\report_option.png"
                 style="width: 90%; height: 90%"
               />
             </ion-button>
